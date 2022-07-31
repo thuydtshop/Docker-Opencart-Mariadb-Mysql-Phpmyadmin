@@ -10,7 +10,7 @@
 
 - When loady your store in the first time, try enter needed informations
 
-- Make sure the Hostname is **`mariadb`** or **`mysql`** (this is the service name of mariadb or mysql in `docker-compose.yml`)
+- Make sure the Hostname is **`mariadb`** or **`mysql`** (this is the service name of mariadb or mysql in `docker-compose.yml`). Refer [installation-note.png](https://github.com/thuydtshop/Docker-Opencart-Mariadb-Mysql-Phpmyadmin/blob/main/installation-note.png)
 
 - Rename `./src/config-dist.php` to `./src/config.php`
 
