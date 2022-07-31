@@ -12,11 +12,19 @@
 
 - Make sure the Hostname is **`mariadb`** or **`mysql`** (this is the service name of mariadb or mysql in `docker-compose.yml`)
 
+- Rename `./src/config-dist.php` to `./src/config.php`
+
+- Rename `./src/amdin/config-dist.php` to `./src/admin/config.php`
+
+- Click Next
+
+- Remove `./src/install` folder
+
 - Enjoy!
 
 ## Directory structure
 
-- Refer [folder-constructe.png](https://www.opencart.com/index.php?route=cms/download/history)
+- Refer [folder-constructe.png](https://github.com/thuydtshop/Docker-Opencart-Mariadb-Mysql-Phpmyadmin/blob/main/folder-constructe.png)
 
 ## Database config
 
