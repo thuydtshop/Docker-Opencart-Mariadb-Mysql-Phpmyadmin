@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+
+  ## For Mysql
+  # mysql:
+  #   image: mysql:8.0.30
+  #   restart: always
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MYSQL_DATABASE: opencartdb
+  #     MYSQL_USER: opencart
+  #     MYSQL_PASSWORD: opencart@2
+  #     MYSQL_ROOT_PASSWORD: opencart@1
+  #   working_dir: /var/lib/mysql
+  #   volumes:
+  #     - './dbdata:/var/lib/mysql:rw'
+
+  ## For Mariadb
+  mariadb:
+    image: mariadb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: opencartdb
+      MYSQL_USER: opencart
+      MYSQL_PASSWORD: opencart@2
+      MYSQL_ROOT_PASSWORD: opencart@1
+    volumes:
+      - './dbdata:/var/lib/mysql:rw'
+
+  ## Opencart source folder
+  opencart:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    restart: always
+    ports:
+      - '8080:80'
+    volumes:
+      - './src:/var/www/html'
+      #- './storage:/var/www/storage'   ## opent when you need to change storage folder
+      #- './src/admin/:/var/www/html/admin123/'   ## opent when you need to change admin folder
+    depends_on:
+      - mariadb
+
+  ## Phpmyadmin or adminer
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    depends_on:
+      - mariadb
+    ports:
+      - '9001:80'
+    environment:
+      PMA_HOST: mariadb
+
+volumes:
+  dbdata:
+    driver: local
+  src:
+    driver: local
