@@ -1,5 +1,9 @@
 # Try to change the php version for compatibility with your Opencart version
-FROM php:8.1.8-apache
+# For Opencart 4
+# FROM php:8.1.8-apache
+
+# For Opencart 3
+FROM php:7.4-apache
 
 ## opent when you need to change admin folder
 #COPY ./src/admin /var/www/html/admin123
